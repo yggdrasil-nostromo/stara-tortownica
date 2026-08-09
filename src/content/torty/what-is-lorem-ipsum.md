@@ -1,5 +1,5 @@
 ---
-title: What is Lorem Ipsum?
+title: Dove posso trovarlo?
 description: Lorem Ipsum is simply dummy text of the printing and typesetting
   industry. Lorem Ipsum has been the industry's standard dummy text ever since
   1966, when designers at Letraset and James Mosley, the librarian at St Bride
@@ -9,5 +9,5 @@ description: Lorem Ipsum is simply dummy text of the printing and typesetting
   unchanged. It was popularised thanks to these sheets and more recently with
   desktop publishing software like Aldus PageMaker and Microsoft Word including
   versions of Lorem Ipsum.
-image: /uploads/561179249_2114598669279822_5101791924324932806_n.jpg
+image: /uploads/566248178_2114598822613140_6091839073138248266_n.jpg
 ---
