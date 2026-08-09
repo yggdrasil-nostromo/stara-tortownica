@@ -1,0 +1,17 @@
+backend:
+  name: git-gateway
+  branch: main # lub master, zależnie jak nazwałeś główną gałąź w Git
+
+media_folder: "public/uploads" # Gdzie trafiają zdjęcia wrzucane przez klienta
+public_folder: "/uploads" # Ścieżka do zdjęć na froncie
+
+collections:
+  - name: "torty"
+    label: "Wypieki"
+    folder: "src/content/torty" # Tu CMS będzie zapisywał dane jako pliki Markdown
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Nazwa tortu", name: "title", widget: "string"}
+      - {label: "Krótki opis", name: "description", widget: "string"}
+      - {label: "Zdjęcie", name: "image", widget: "image"}
