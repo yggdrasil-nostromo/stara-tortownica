@@ -1,17 +1,153 @@
 ---
-
+// To jest sekcja JS dla serwera w Astro (na razie pusta, potem będziemy tu pobierać torty)
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stara Tortownica | Custom Cakes</title>
+    
+    <!-- Skrypt niezbędny do logowania w panelu CMS -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --text-color: #f0f0f0;
+            --accent: #ff0055; /* Agresywny różowo-czerwony neon */
+            --border-color: #333;
+        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Sekcja Hero z mocnym wejściem */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            /* Tymczasowe tło, potem podmienimy na mroczne zdjęcie */
+            background: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            border-bottom: 2px solid var(--accent);
+        }
+
+        h1 {
+            font-size: clamp(2rem, 8vw, 6rem);
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            color: #888;
+        }
+
+        /* Przycisk CTA */
+        .btn {
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--accent);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.2s ease-out;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
+        }
+
+        /* Asymetryczny CSS Grid na wypieki */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+            padding: 60px 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .cake-card {
+            background: #111;
+            border: 1px solid var(--border-color);
+            aspect-ratio: 4/5;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: border-color 0.3s;
+            position: relative;
+        }
+
+        .cake-card:hover {
+            border-color: var(--accent);
+        }
+
+        .cake-card h3 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+    </style>
+  </head>
+  <body>
+
+    <header class="hero">
+        <h1>Stara Tortownica</h1>
+        <p class="subtitle">Customowe wypieki. Zero pastelowego lukru. Czysta rzeźba i smak.</p>
+        <a href="#zamow" class="btn">ZAMÓW CUSTOM</a>
+    </header>
+
+    <main class="gallery">
+        <div class="cake-card">
+            <h3>Cyberpunk</h3>
+            <p>Testowy wpis 1</p>
+        </div>
+        <div class="cake-card">
+            <h3>Industrial</h3>
+            <p>Testowy wpis 2</p>
+        </div>
+        <div class="cake-card">
+            <h3>Krwawa Mary</h3>
+            <p>Testowy wpis 3</p>
+        </div>
+    </main>
+
+    <!-- Skrypt przekierowujący użytkownika po zalogowaniu -->
+    <script>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
+      }
+    </script>
+  </body>
 </html>
